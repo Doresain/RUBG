@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubg_rb (0.1.0)
+    pubg_ruby (0.1.0)
       httparty (~> 0.16.2)
       json
 
@@ -21,7 +21,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   minitest (~> 5.0)
-  pubg_rb!
+  pubg_ruby!
   rake (~> 10.0)
 
 BUNDLED WITH

@@ -1,6 +1,6 @@
 require 'httparty'
 
-module PubgRb
+module PubgRuby
   class Client
     include HTTParty
     base_uri 'https://api.playbattlegrounds.com/shards'
@@ -17,7 +17,7 @@ module PubgRb
     # "playerIds" - Comma-separated list of player IDs to search for.
     # Note that if neither playerIds or playerNames is included no results will be returned.
     def players(options)
-      PubgRb::Players.new(self, options)
+      PubgRuby::Players.new(self, options)
     end
   end
 end

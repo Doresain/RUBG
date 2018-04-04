@@ -1,4 +1,4 @@
-module PubgRb
+module PubgRuby
   class Players
     attr_reader :errors, :data, :raw_response, :uri, :headers, :query
 
