@@ -1,7 +1,7 @@
 require "test_helper"
 
-class PubgRubyTest < Minitest::Test
+class RUBGTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::PubgRuby::VERSION
+    refute_nil ::RUBG::VERSION
   end
 end

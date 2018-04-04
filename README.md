@@ -1,6 +1,6 @@
-# pubg_ruby
+# rubg
 
-pubg_ruby is an unofficial PUBG API wrapper for Ruby.
+rubg is an unofficial PUBG API wrapper for Ruby.
 
 It is also a project I am using to build my own development skills. As such, it is likely this gem will not remain up to date with API changes, and updates will be slow. Given that I am using this as a teaching tool for myself I will not be accepting contributions. That said, feel free to use the gem as-is in your own application if it is useful, or to fork the repository and update it yourself as you'd like.
 
@@ -9,7 +9,7 @@ It is also a project I am using to build my own development skills. As such, it 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pubg_ruby'
+gem 'rubg'
 ```
 
 And then execute:
@@ -18,13 +18,13 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pubg_ruby
+    $ gem install rubg
 
 ## Usage
 
 First, create a client and provide your API key:
 ```ruby
-client = PubgRuby::Client.new("your-api-key-here")
+client = RUBG::Client.new("your-api-key-here")
 ```
     
 If no key is added the gem will try and find it at ENV['PUBG_API_KEY'].
@@ -46,7 +46,7 @@ Note that if neither playerIds or playerNames are included no results will be re
 
 ## Contributing
 
-Bug reports are welcome on GitHub at https://github.com/dor-edras/pubg_ruby. As mentioned above, I am not accepting contributions to this project but you are welcome to fork it!
+Bug reports are welcome on GitHub at https://github.com/dor-edras/rubg. As mentioned above, I am not accepting contributions to this project but you are welcome to fork it!
 
 ## License
 
