@@ -1,4 +1,4 @@
-module RUBG
+module RUBG 
   class Players
     attr_reader :errors, :data, :raw_response, :uri, :headers, :query
 
@@ -31,7 +31,7 @@ module RUBG
 
       def assemble_uri(options)
         shard = options["shard"] || "pc-na"
-        uri = "/#{shard}/players"
+        uri = "/shards/#{shard}/players"
 
         return uri
       end
@@ -49,7 +49,7 @@ module RUBG
         query = {}
         query["filter[playerIds]"] = options["playerIds"].delete(' ') if options["playerIds"]
         query["filter[playerNames]"] = options["playerNames"].delete(' ') if options["playerNames"]
-        
+        query["page[limit]"] = 1
         return query
       end
   end

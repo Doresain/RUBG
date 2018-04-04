@@ -29,6 +29,14 @@ client = RUBG::Client.new("your-api-key-here")
     
 If no key is added the gem will try and find it at ENV['PUBG_API_KEY'].
 
+Check the PUBG API status and version:
+
+```ruby
+client.status.alive? 
+client.status.version
+client.status.released_at
+```
+
 
 Only the players endpoint is functional at present, and it is only partially functional:
 
@@ -41,6 +49,7 @@ options variable should be a hash of:
 - "shard" - Specify the shard to retreieve data from. If none is specified pc-na will be used.
 - "playerNames" - Comma-separated list of players to search for, case-sensitive
 - "playerIds" - Comma-separated list of player IDs to search for.
+
 Note that if neither playerIds or playerNames are included no results will be returned.
 
 

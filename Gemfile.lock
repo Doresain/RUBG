@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubg (0.1.0)
+    rubg (0.1.1)
       httparty (~> 0.16.2)
       json
 
@@ -21,8 +21,8 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   minitest (~> 5.0)
-  rubg!
   rake (~> 10.0)
+  rubg!
 
 BUNDLED WITH
    1.16.1

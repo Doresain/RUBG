@@ -3,13 +3,18 @@ require 'httparty'
 module RUBG
   class Client
     include HTTParty
-    base_uri 'https://api.playbattlegrounds.com/shards'
+    base_uri 'https://api.playbattlegrounds.com'
     attr_accessor :api_key, :content_type
     
     def initialize(api_key = ENV['PUBG_API_KEY'])
       @api_key = api_key
       @content_type = "application/vnd.api+json"
     end
+
+    def Status
+      RUBG::Status.new(self)
+    end
+
 
     # options variable is a hash of:
     # "shard" - Specify the shard to retreieve data from. If none is specified pc-na will be used.
