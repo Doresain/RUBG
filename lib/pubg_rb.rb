@@ -1,5 +1,7 @@
 require "pubg_rb/version"
+require "pubg_rb/client"
+require "pubg_rb/players"
 
 module PubgRb
-  # Your code goes here...
+
 end

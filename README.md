@@ -1,8 +1,8 @@
-# PubgRb
+# pubg-rb
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pubg_rb`. To experiment with that code, run `bin/console` for an interactive prompt.
+pubg-rb is an unofficial PUBG API wrapper for Ruby.
 
-TODO: Delete this and the text above, and describe your gem
+It is also a project I am using to build my own development skills. As such, it is likely this gem will not remain up to date with API changes, and updates will be slow. Given that I am using this as a teaching tool for myself I will not be accepting contributions. That said, feel free to use the gem as-is in your own application if it is useful, or to fork the gem and update it yourself if you'd like.
 
 ## Installation
 
@@ -37,3 +37,9 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+
+
+
+response["data"][0]["relationships"]["matches"]["data"][0]["id"]
+response = client.class.get("/pc-na/players", {headers: {"Authorization" => "#{client.api_key}", "Accept" => "application/vnd.api+json"}, query: {"filter[playerNames]" => "Doresain"}})
