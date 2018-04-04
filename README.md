@@ -1,6 +1,6 @@
-# rubg
+# RUBG
 
-rubg is an unofficial PUBG API wrapper for Ruby.
+RUBG is an unofficial Ruby pUBG API wrapper.
 
 It is also a project I am using to build my own development skills. As such, it is likely this gem will not remain up to date with API changes, and updates will be slow. Given that I am using this as a teaching tool for myself I will not be accepting contributions. That said, feel free to use the gem as-is in your own application if it is useful, or to fork the repository and update it yourself as you'd like.
 
