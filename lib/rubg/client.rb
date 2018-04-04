@@ -11,7 +11,7 @@ module RUBG
       @content_type = "application/vnd.api+json"
     end
 
-    def Status
+    def status
       RUBG::Status.new(self)
     end
 
