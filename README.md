@@ -2,7 +2,7 @@
 
 pubg-rb is an unofficial PUBG API wrapper for Ruby.
 
-It is also a project I am using to build my own development skills. As such, it is likely this gem will not remain up to date with API changes, and updates will be slow. Given that I am using this as a teaching tool for myself I will not be accepting contributions. That said, feel free to use the gem as-is in your own application if it is useful, or to fork the gem and update it yourself if you'd like.
+It is also a project I am using to build my own development skills. As such, it is likely this gem will not remain up to date with API changes, and updates will be slow. Given that I am using this as a teaching tool for myself I will not be accepting contributions. That said, feel free to use the gem as-is in your own application if it is useful, or to fork the repository and update it yourself as you'd like.
 
 ## Installation
 
@@ -22,24 +22,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+First, create a client and provide your API key:
+    $ client = PubgRb::Client.new("your-api-key-here")
+If no key is added the gem will try and find it at ENV['PUBG_API_KEY'].
 
-## Development
+Only the players endpoint is functional at present, and it is only partially functional:
+    $ options = {"shard" => "pc-na", "playerNames" => "Shroud"}
+    $ client.players(options)
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+options variable should be a hash of:
+    # "shard" - Specify the shard to retreieve data from. If none is specified pc-na will be used.
+    # "playerNames" - Comma-separated list of players to search for, case-sensitive
+    # "playerIds" - Comma-separated list of player IDs to search for.
+Note that if neither playerIds or playerNames are included no results will be returned.
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/pubg_rb.
+Bug reports are welcome on GitHub at https://github.com/dor-edras/pubg_rb. As mentioned above, I am not accepting contributions to this project but you are welcome to fork it!
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-
-
-
-response["data"][0]["relationships"]["matches"]["data"][0]["id"]
-response = client.class.get("/pc-na/players", {headers: {"Authorization" => "#{client.api_key}", "Accept" => "application/vnd.api+json"}, query: {"filter[playerNames]" => "Doresain"}})
