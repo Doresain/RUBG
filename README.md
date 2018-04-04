@@ -23,18 +23,24 @@ Or install it yourself as:
 ## Usage
 
 First, create a client and provide your API key:
-    $ client = PubgRb::Client.new("your-api-key-here")
+```ruby
+client = PubgRb::Client.new("your-api-key-here")
+```
+    
 If no key is added the gem will try and find it at ENV['PUBG_API_KEY'].
 
-Only the players endpoint is functional at present, and it is only partially functional:
-    $ options = {"shard" => "pc-na", "playerNames" => "Shroud"}
-    $ client.players(options)
 
+Only the players endpoint is functional at present, and it is only partially functional:
+
+```ruby
+options = {"shard" => "pc-na", "playerNames" => "Shroud"}
+client.players(options)
+```
 
 options variable should be a hash of:
-    # "shard" - Specify the shard to retreieve data from. If none is specified pc-na will be used.
-    # "playerNames" - Comma-separated list of players to search for, case-sensitive
-    # "playerIds" - Comma-separated list of player IDs to search for.
+- "shard" - Specify the shard to retreieve data from. If none is specified pc-na will be used.
+- "playerNames" - Comma-separated list of players to search for, case-sensitive
+- "playerIds" - Comma-separated list of player IDs to search for.
 Note that if neither playerIds or playerNames are included no results will be returned.
 
 
