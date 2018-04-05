@@ -1,7 +1,7 @@
 module RUBG 
   class Players < RubgEndpoint
 
-    def initialize(client,response,query)
+    def initialize(client,response)
       super
     end
 
@@ -12,7 +12,7 @@ module RUBG
       query_options["filter[playerIds]"] = query_options.delete("playerIds")
       super(client,endpoint,shard,query_options)
 
-      RUBG::Players.new(client,@response,@query)
+      RUBG::Players.new(client,@response)
     end
 
   end

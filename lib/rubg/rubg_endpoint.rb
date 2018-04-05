@@ -1,19 +1,18 @@
 module RUBG
   class RubgEndpoint
-    attr_reader :errors, :data, :response_ts, :ratelimit, :ratelimit_remaining, :raw_response, :query
+    attr_reader :errors, :data, :response_ts, :ratelimit, :ratelimit_remaining, :raw_response
 
-    def initialize(client,response,query)
+    def initialize(client,response)
       @errors               = response["errors"]
       @data                 = response["data"]
       @response_ts          = Time.parse(response.headers['date']) if response.headers['date']
       @ratelimit            = response.headers['x-ratelimit-limit']
       @ratelimit_remaining  = response.headers['x-ratelimit-remaining']
       @raw_response         = response
-      @query = query
     end
 
 
-    def self.fetch(client,endpoint,shard,query_options)
+    def self.fetch(client,endpoint,shard={},query_options={})
       @uri      = assemble_uri(shard,endpoint)
       @headers  = assemble_headers(client)
       @query    = assemble_query(client,query_options)
@@ -21,7 +20,7 @@ module RUBG
       @response = client.class.get(@uri,{headers: @headers,
                                         query:    @query})
 
-      return @response,@query
+      return @response
     end
 
 
@@ -33,6 +32,7 @@ module RUBG
         else
           uri = "/shards/#{shard}/#{endpoint}"
         end
+
         return uri
       end
 
