@@ -59,27 +59,37 @@ client.status.released_at    # "2018-04-01T18:00:20Z"
 #### /players Endpoint
 /players is currently only partially functional. Queries may be performed, but the response is JSON only. You can obtain match IDs to look up manually, however, until I implement /matches.
 
-.players requires an 'options' argument, which should be a hash containing:
+.players takes two arguments: shard and query_options. 
 
-- "shard" - Specify the [shard](https://documentation.playbattlegrounds.com/en/making-requests.html#regions) to retreieve data from. If none is specified, "pc-na" will be used as default.
+"shard"
+- Specify the [shard](https://documentation.playbattlegrounds.com/en/making-requests.html#regions) to retreieve data from. If none is specified, "pc-na" will be used as default.
+
+"query_options" - a hash containing any query options. For .players, the hash should contain *one* of the following options:
 - "playerNames" - Comma-separated list of players to search for. Names are case-sensitive.
 - "playerIds" - Comma-separated list of player IDs to search for.
 
-Note: If neither playerIds nor playerNames are included in options no results will be returned - at least one name or Id must be present.
+Note: If neither playerIds nor playerNames are included in query_options no results will be returned - at least one name or Id must be present.
 
 ```ruby
-options = {"shard" => "pc-na", "playerNames" => "Shroud,JoshOG,PlayerUnknown"}
-players = client.players(options)
+shard = "pc-na"
+query_options = {"playerNames" => "Shroud,JoshOG,PlayerUnknown"}
+players = client.players(shard,query_options)
 ```
 
 The response will contain a top level object called 'errors' or 'data' depending on if the query failed or succeeded.
 
 ```ruby
-players.errors .    # [{"title"=>"Not Found", "detail"=>"No players found matching criteria"}]
+players.errors .               # [{"title"=>"Not Found", "detail"=>"No players found matching criteria"}]
 ```
 
 ```ruby
-players.data        # Returns retrieved player data.
+players.data                   # Returns retrieved player data.
+```
+
+```ruby
+players.response_ts            # Time object containing date/time of response
+players.ratelimit              # Returns the max rate limit/min for your API key.
+players.ratelimit_remaining    # Returns the number of requests your API key has remaining before hitting the ratelimit.
 ```
 
 ## Contributing
