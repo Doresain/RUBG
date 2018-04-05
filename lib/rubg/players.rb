@@ -1,57 +1,20 @@
 module RUBG 
-  class Players
-    attr_reader :errors, :data, :raw_response, :uri, :headers, :query
+  class Players < RubgEndpoint
 
-
-    def initialize(client, options)
-      players = players_endpoint(client, options)
-
-      @errors       = players["errors"]
-      @data         = players["data"]
-      @raw_response = players
+    def initialize(client,response,query)
+      super
     end
 
 
-    private
-      def players_endpoint(client, options)
-        @uri    = assemble_uri(options)
-        @headers = assemble_headers(client)
-        if options["playerIds"] || options["playerNames"]
-          @query   = assemble_query(client,options)
-        else
-          @query = ""
-        end
+    def self.fetch(client,shard,query_options)
+      endpoint = "players"
+      query_options["filter[playerNames]"] = query_options.delete("playerNames")
+      query_options["filter[playerIds]"] = query_options.delete("playerIds")
+      super(client,endpoint,shard,query_options)
 
-        response = client.class.get(@uri,{headers: @headers,
-                                        query:    @query})
+      RUBG::Players.new(client,@response,@query)
+    end
 
-        return response.parsed_response
-      end
-
-
-      def assemble_uri(options)
-        shard = options["shard"] || "pc-na"
-        uri = "/shards/#{shard}/players"
-
-        return uri
-      end
-
-      def assemble_headers(client)
-        headers = {
-                  "Authorization"   => client.api_key, 
-                  "Accept"          => client.content_type
-                }
-
-        return headers
-      end
-
-      def assemble_query(client, options)
-        query = {}
-        query["filter[playerIds]"] = options["playerIds"].delete(' ') if options["playerIds"]
-        query["filter[playerNames]"] = options["playerNames"].delete(' ') if options["playerNames"]
-        query["page[limit]"] = 1
-        return query
-      end
   end
 end
 

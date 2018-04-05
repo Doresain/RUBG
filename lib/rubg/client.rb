@@ -4,25 +4,43 @@ module RUBG
   class Client
     include HTTParty
     base_uri 'https://api.playbattlegrounds.com'
-    attr_accessor :api_key, :content_type
-    
-    def initialize(api_key = ENV['PUBG_API_KEY'])
+    attr_accessor :api_key, :content_type, :gzip
+
+    def initialize(api_key=ENV['PUBG_API_KEY'],gzip=false)
       @api_key = api_key
       @content_type = "application/vnd.api+json"
+      @gzip = gzip
     end
+
 
     def status
-      RUBG::Status.new(self)
+      RUBG::Status.fetch(self)
     end
 
 
-    # options variable is a hash of:
-    # "shard" - Specify the shard to retreieve data from. If none is specified pc-na will be used.
-    # "playerNames" - Comma-separated list of players to search for, case-sensitive
-    # "playerIds" - Comma-separated list of player IDs to search for.
-    # Note that if neither playerIds or playerNames is included no results will be returned.
-    def players(options)
-      RUBG::Players.new(self, options)
+    def players(shard=$RUBG_DEFAULT_SHARD,query_options={})
+      RUBG::Players.fetch(self, shard, query_options)
     end
+
+  
+    def player
+    
+    end
+
+
+    def matches
+
+    end
+
+
+    def match
+
+    end
+
+
+    def telemetry
+
+    end
+
   end
 end
