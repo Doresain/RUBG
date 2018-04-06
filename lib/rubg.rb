@@ -1,6 +1,9 @@
 require "rubg/version"
 require "rubg/client"
 require "rubg/rubg_endpoint"
+require "rubg/match"
+require "rubg/matches"
+require "rubg/player"
 require "rubg/players"
 require "rubg/status"
 
