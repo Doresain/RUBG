@@ -16,6 +16,7 @@ Development is very much in-progress. Note that breaking changes with new releas
 1. Finish /players endpoint, allowing conversion of matches to Match objects in response
 2. Add /matches endpoint to retrieve a single match, including objects for Rosters, etc.
 3. Telemetry
+4. gzip support
 
 At some point in there I need to get testing coverage up to date.
 
@@ -81,14 +82,14 @@ players = client.players(args)
 The response will contain a top level object called 'errors' or 'data' and 'players', depending on if the query failed or succeeded.
 
 ```ruby
-players.errors .               # [{"title"=>"Not Found", "detail"=>"No players found matching criteria"}]
+players.errors                    # [{"title"=>"Not Found", "detail"=>"No players found matching criteria"}]
 ```
 
 ```ruby
 players.data                      # Returns retrieved player data.
 
 players.players.first.name        #"shroud"
-players.players.first.name        #"account.d50fdc18fcad49c691d38466bed6f8fd"
+players.players.first.player_id   #"account.d50fdc18fcad49c691d38466bed6f8fd"
 players.players.first.match_ids   #returns array of all match IDs for the player
 
 players.response_ts            # Time object containing date/time of response
@@ -96,6 +97,11 @@ players.ratelimit              # Returns the max rate limit/min for your API key
 players.ratelimit_remaining    # Returns the number of requests your API key has remaining before hitting the ratelimit.
 
 ```
+
+## Resources
+[Offical PUBG API Documentation](https://documentation.playbattlegrounds.com/en/introduction.html)
+[Official PUBG API Discord](https://discord.gg/FcsT7t3)
+[Unofficial PUBG Developer Wiki](http://www.pubgwiki.org/Main_Page)
 
 ## Contributing
 
