@@ -100,8 +100,11 @@ players.ratelimit_remaining    # Returns the number of requests your API key has
 
 ## Resources
 [Offical PUBG API Documentation](https://documentation.playbattlegrounds.com/en/introduction.html)
+
 [Official PUBG API Discord](https://discord.gg/FcsT7t3)
+
 [Unofficial PUBG Developer Wiki](http://www.pubgwiki.org/Main_Page)
+
 
 ## Contributing
 
