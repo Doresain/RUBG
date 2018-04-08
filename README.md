@@ -1,4 +1,5 @@
 # RUBG
+[![Gem Version](https://badge.fury.io/rb/rubg.svg)](https://badge.fury.io/rb/rubg)
 
 RUBG is an unofficial Ruby PUBG API wrapper.
 
