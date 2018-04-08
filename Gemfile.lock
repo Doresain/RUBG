@@ -1,9 +1,10 @@
 PATH
   remote: .
   specs:
-    rubg (0.2.1)
+    rubg (0.2.2)
       httparty (~> 0.16.2)
-      json
+      json (~> 2.1.0)
+      zlib (~> 1.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -14,6 +15,7 @@ GEM
     minitest (5.11.3)
     multi_xml (0.6.0)
     rake (10.5.0)
+    zlib (1.0.0)
 
 PLATFORMS
   ruby

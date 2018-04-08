@@ -1,4 +1,4 @@
-module RUBG 
+module RUBG  
   class Participant
     attr_reader :participant_id, :actor, :shard, :dbnos, :assists, :boosts, :damage_dealt, 
     :death_type, :headshot_kills, :heals, :kill_place, :kill_ranking_before, :kill_ranking_gained, 
@@ -7,7 +7,7 @@ module RUBG
     :vehicle_destroys, :walk_distance, :weapons_acquired, :win_place, :win_ranking_before,  
     :win_ranking_gained, :overall_ranking_gained, :stats
 
-    alias_method :downed, :dbnos
+    alias_method :knocks, :dbnos
 
     def initialize( args )
 

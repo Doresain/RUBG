@@ -2,7 +2,7 @@
 
 RUBG is an unofficial Ruby PUBG API wrapper.
 
-It is also a side project I am using to build my own Ruby skills. As such, updates may be slow and this gem may not remain up to date with API changes. Please feel free to leave enhancement requests as issues, I may use that to help prioritize. 
+RUBG attempts to be fairly comprehensive and provide abstraction from the PUBG API while remaining consistent enough that the [offical PUBG API documentation](https://documentation.playbattlegrounds.com/en/introduction.html) is still useful.
 
 
 
@@ -16,9 +16,8 @@ Development is very much in-progress. Note that breaking changes with new releas
 - The /matches endpoint is fully funtional. Match, roster, and participant data and stats are available with getter methods.
 
 #### To-do
-1. cross-object lookup convenience methods (ie. player.matches.fetch_latest or similar)
-2. gzip support
-3. Telemetry
+1. Telemetry
+2. cross-object lookup convenience methods (ie. player.matches.fetch_latest or similar)
 
 At some point in there I need to get testing coverage up to date.
 
@@ -51,6 +50,13 @@ Or install it yourself as:
 Most lookup methods take a hash as argument.
 
 
+#### Base Class
+
+```ruby
+RUBG.new        # Convenience alias for RUBG::Client.new
+RUBG.shards     # Reference for available PUBG platform/region shards
+```
+
 #### Create a Client
 First, create a client and provide your API key:
 ```ruby
@@ -58,6 +64,8 @@ client = RUBG::Client.new({:api_key =>"your-api-key-here"})
 ```
     
 The client object is used to make requests. If no key is added the gem will try and find it at ENV['PUBG_API_KEY'].
+
+All responses are gzip that is parsed to json on receipt for faster transmission. At this timne this is not configurable, but should be transparent.
 
 The response will contain either a top level object called 'errors' if unsuccessful.
 
@@ -187,7 +195,7 @@ match.player_count                  # Count of players in the match.
 match.roster_count                  # Count of teams in the match.
 match.names                         # List of names for all players in the match.
 match.survived                      # Collection of RUBG::Participant objects for players alive at the end.
-match.dbnos                         # Total non-lethal knockdowns. (down but not outs)
+match.dbnos                         # Total non-lethal knockdowns. (down but not outs) Alias: .knocks
 match.assists                       # Total assists.
 match.boosts                        # Total boosts used.
 match.damage_dealt                  # Total damage dealt.
@@ -222,7 +230,7 @@ match.rosters[0].participants                  # Collection of RUBG::Participant
 
 match.rosters[0].names                         # List of names for all players on the roster.
 match.rosters[0].survived                      # Collection of RUBG::Participant objects roster members alive at the end.
-match.rosters[0].downed                        # Times roster members downed.
+match.rosters[0].dbnos                         # Total non-lethal knockdowns. (down but not outs) Alias: .knocks
 match.rosters[0].assists                       # Total assists by roster.
 match.rosters[0].boosts                        # Total boosts used by roster.
 match.rosters[0].damage_dealt                  # Total damage dealt by roster.
@@ -252,7 +260,7 @@ Retrieved from .match and available in .participants or .rosters[].participants 
 match.participants[0].participant_id                # Unique participant ID
 match.participants[0].shard                         # Shard the match was played on
 
-match.participants[0].downed                        # Times participant downed.
+match.participants[0].dbnos                         # Total non-lethal knockdowns. (down but not outs) Alias: .knocks
 match.participants[0].assists                       # Total assists by participant.
 match.participants[0].boosts                        # Total boosts used by participant.
 match.participants[0].damage_dealt                  # Total damage dealt by participant.
@@ -288,9 +296,12 @@ match.participants[0].overall_ranking_gained........# Overall ranking gained.
 ## Resources
 [Offical PUBG API Documentation](https://documentation.playbattlegrounds.com/en/introduction.html)
 
+[Official PUBG API Developer Resources](https://github.com/pubg/api-assets)
+
 [Official PUBG API Discord](https://discord.gg/FcsT7t3)
 
 [Unofficial PUBG Developer Wiki](http://www.pubgwiki.org/Main_Page)
+
 
 
 ## Contributing

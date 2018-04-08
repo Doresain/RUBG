@@ -1,4 +1,4 @@
-module RUBG 
+module RUBG  
   class Match < RubgEndpoint
     attr_reader :match_id, :created, :duration, :mode, :map, :patch_version, :shard, :stats,
       :tags, :title_id, :telemetry_id, :rounds, :spectators, :link, :telemetry_link,
@@ -9,6 +9,7 @@ module RUBG
 
     attr_accessor   :rosters, :participants
     alias_method    :winner,  :winners
+    alias_method    :knocks,  :dbnos
 
     def initialize( args )
       args                  = self.class.defaults.merge(args)

@@ -1,6 +1,6 @@
 module RUBG 
   class Player < RubgEndpoint
-    attr_reader :player_id, :name, :created, :updated, :patch_version, :shard_id, :stats,
+    attr_reader :player_id, :name, :created, :updated, :patch_version, :shard, :stats,
       :title_id, :assets, :match_ids, :link
 
     attr_accessor :matches

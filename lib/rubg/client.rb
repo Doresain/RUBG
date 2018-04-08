@@ -4,7 +4,10 @@ module RUBG
   class Client
     include HTTParty
     base_uri 'https://api.playbattlegrounds.com'
-    attr_accessor :api_key, :content_type, :gzip
+    format :json
+    parser RUBG::JsonGzipParser
+    attr_reader :gzip
+    attr_accessor :api_key, :content_type
 
     def initialize( args={} )
       args          = self.class.defaults.merge(args)
@@ -54,7 +57,7 @@ module RUBG
       {
         :api_key      => ENV['PUBG_API_KEY'],
         :content_type => "application/vnd.api+json",
-        :gzip         => false
+        :gzip         => true
       }
     end
 

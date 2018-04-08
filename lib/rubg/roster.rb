@@ -1,4 +1,4 @@
-module RUBG 
+module RUBG  
   class Roster
     attr_reader :roster_id, :shard, :team_id, :team, :rank, :won, :participant_ids, :size,
     :names, :survived, :dbnos, :assists, :boosts, :damage_dealt, :damage_dealt_avg, :death_types, :headshot_kills,
@@ -7,7 +7,7 @@ module RUBG
 
     attr_accessor :participants
     alias_method :player_count, :size
-    alias_method :downed, :dbnos
+    alias_method :knocks, :dbnos
 
     def initialize( args )
 
