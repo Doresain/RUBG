@@ -22,7 +22,7 @@ module RUBG
 
     def players( args )
       args = {:client => self }.merge(args)
-      RUBG::Players.fetch( args )
+      RUBG::PlayerCollection.fetch( args )
     end
 
   
@@ -37,8 +37,9 @@ module RUBG
     end
 
 
-    def match
-
+    def match ( args )
+      args = {:client => self }.merge(args)
+      RUBG::Match.fetch( args )
     end
 
 

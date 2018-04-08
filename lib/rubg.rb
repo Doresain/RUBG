@@ -1,10 +1,13 @@
 require "rubg/version"
 require "rubg/client"
 require "rubg/rubg_endpoint"
-require "rubg/match"
-require "rubg/matches"
 require "rubg/player"
-require "rubg/players"
+require "rubg/player_collection"
+require "rubg/match"
+require "rubg/match_collection"
+require "rubg/roster"
+require "rubg/participant"
+require "rubg/telemetry"
 require "rubg/status"
 
 

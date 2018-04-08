@@ -56,9 +56,12 @@ module RUBG
           uri = '/status'
         elsif args[:endpoint] == 'player'
           uri = "/shards/#{args[:shard]}/players/#{args[:lookup_id]}"
+        elsif args[:endpoint] == 'match'
+          uri = "/shards/#{args[:shard]}/matches/#{args[:lookup_id]}"
         else
           uri = "/shards/#{args[:shard]}/#{args[:endpoint]}"
         end
+
         return uri
       end
 
@@ -82,7 +85,7 @@ module RUBG
           remove_spaces(value) if value
         end
         query = args[:query_params]
-        
+
         return query
       end
 

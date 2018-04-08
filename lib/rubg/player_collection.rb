@@ -1,5 +1,5 @@
 module RUBG 
-  class Players < RubgEndpoint
+  class PlayerCollection < RubgEndpoint
     attr_reader :players
 
     def initialize( args )
@@ -37,7 +37,7 @@ module RUBG
         :query_params  => args[:query_params]
         })
 
-      RUBG::Players.new({
+      RUBG::PlayerCollection.new({
         :client   => args[:client],
         :response => @response
         })

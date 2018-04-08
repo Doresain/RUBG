@@ -1,6 +1,6 @@
 module RUBG
   class Status < RubgEndpoint
-    attr_reader :released_at, :version
+    attr_reader :released_at, :version, :alive
     
     def initialize( args )
       args     = self.class.defaults.merge(args)

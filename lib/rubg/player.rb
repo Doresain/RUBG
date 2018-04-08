@@ -16,7 +16,7 @@ module RUBG
         @created        = args[:player_data]["attributes"]["createdAt"]
         @updated        = args[:player_data]["attributes"]["updatedAt"]
         @patch_version  = args[:player_data]["attributes"]["patchVersion"]
-        @shard_id       = args[:player_data]["attributes"]["shardId"]
+        @shard          = args[:player_data]["attributes"]["shardId"]
         @stats          = args[:player_data]["attributes"]["stats"]
         @title_id       = args[:player_data]["attributes"]["titleId"]
         @assets         = args[:player_data]["relationships"]["assets"]["data"]
@@ -29,7 +29,7 @@ module RUBG
 
     def self.fetch( args )
       args                  = self.defaults.merge(args)
-      STDERR.puts args.inspect
+
       endpoint = "player"
       
       player_id = args[:query_params][:player_id]
