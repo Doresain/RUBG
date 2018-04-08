@@ -6,7 +6,7 @@ module RUBG
     base_uri 'https://api.playbattlegrounds.com'
     attr_accessor :api_key, :content_type, :gzip
 
-    def initialize( args )
+    def initialize( args={} )
       args          = self.class.defaults.merge(args)
       @api_key      = args[:api_key]
       @content_type = args[:content_type]

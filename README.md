@@ -98,6 +98,8 @@ response.players     # collection of player objects
 response.response_ts            # Time object containing date/time of response
 response.ratelimit              # Returns the max rate limit/min for your API key.
 response.ratelimit_remaining    # Returns the number of requests your API key has remaining before hitting the ratelimit.
+response.ratelimit_reset        # Timestamp of ratelimit reset as Integer (Epoch seconds).
+response.ratelimit_reset_in     # Seconds until ratelimit reset.
 ```
 
 
@@ -118,6 +120,8 @@ response = client.player(args)
 response.response_ts            # Time object containing date/time of response
 response.ratelimit              # Returns the max rate limit/min for your API key.
 response.ratelimit_remaining    # Returns the number of requests your API key has remaining before hitting the ratelimit.
+response.ratelimit_reset        # Timestamp of ratelimit reset as Integer (Epoch seconds).
+response.ratelimit_reset_in     # Seconds until ratelimit reset.
 ```
 
 
@@ -138,12 +142,14 @@ response = client.match(args)
 response.response_ts            # Time object containing date/time of response
 response.ratelimit              # Returns the max rate limit/min for your API key.
 response.ratelimit_remaining    # Returns the number of requests your API key has remaining before hitting the ratelimit.
+response.ratelimit_reset        # Timestamp of ratelimit reset as Integer (Epoch seconds).
+response.ratelimit_reset_in     # Seconds until ratelimit reset.
 
 ```
 
 
 
-### RUBG Objects
+### RUBG Classes
 
 #### RUBG::Player
 

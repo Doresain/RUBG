@@ -1,6 +1,6 @@
 module RUBG
   class RubgEndpoint
-    attr_reader :errors, :data, :response_ts, :ratelimit, :ratelimit_remaining, :raw_response
+    attr_reader :errors, :data, :response_ts, :ratelimit, :ratelimit_remaining, :ratelimit_reset, :raw_response
 
     def initialize( args )
       args                  = self.class.defaults.merge(args)
@@ -9,6 +9,7 @@ module RUBG
       @response_ts          = Time.parse(args[:response].headers['date']) if args[:response].headers['date']
       @ratelimit            = args[:response].headers['x-ratelimit-limit']
       @ratelimit_remaining  = args[:response].headers['x-ratelimit-remaining']
+      @ratelimit_reset      = args[:response].headers['x-ratelimit-reset'].to_i
       @raw_response         = args[:response]
     end
 
@@ -37,6 +38,9 @@ module RUBG
       return @response
     end
 
+    def ratelimit_reset_in
+      @ratelimit_reset.to_i - Time.now.to_i
+    end
 
 
     private

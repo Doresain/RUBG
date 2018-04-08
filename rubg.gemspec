@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dor"]
   spec.email         = ["dor.edras@gmail.com"]
 
-  spec.summary       = %q{Unofficial PUBG API wrapper gem for Ruby.}
-  spec.description   = %q{Unofficial PUBG API wrapper gem for Ruby.}
+  spec.summary       = %q{RUBG is a Ruby wrapper for the official PUBG API.}
+  spec.description   = %q{RUBG is a Ruby wrapper for the official PUBG API.}
   spec.homepage      = "https://github.com/dor-edras/rubg"
   spec.license       = "MIT"
 
