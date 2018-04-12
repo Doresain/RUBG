@@ -1,7 +1,7 @@
 require 'httparty'
 require 'zlib'
 
-require "rubg/json_gzip_parser"
+require "rubg/parse_gzip"
 require "rubg/version"
 require "rubg/client"
 require "rubg/rubg_endpoint"

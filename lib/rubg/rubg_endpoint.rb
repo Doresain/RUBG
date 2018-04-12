@@ -9,7 +9,7 @@ module RUBG
       @response_ts          = Time.parse(args[:response].headers['date']) if args[:response].headers['date']
       @ratelimit            = args[:response].headers['x-ratelimit-limit']
       @ratelimit_remaining  = args[:response].headers['x-ratelimit-remaining']
-      @ratelimit_reset      = args[:response].headers['x-ratelimit-reset'].to_i
+      @ratelimit_reset      = args[:response].headers['x-ratelimit-reset']
       @raw_response         = args[:response]
     end
 
@@ -55,15 +55,18 @@ module RUBG
 
       def self.assemble_uri( args )
         args     = self.defaults.merge(args)
-
+        base_uri = "https://api.playbattlegrounds.com"
+        STDERR.puts args.inspect
         if args[:endpoint] == 'status'
-          uri = '/status'
+          uri = "#{base_uri}/status"
+        elsif args[:endpoint] == 'telemetry'
+          uri = args[:lookup_id]
         elsif args[:endpoint] == 'player'
-          uri = "/shards/#{args[:shard]}/players/#{args[:lookup_id]}"
+          uri = "#{base_uri}/shards/#{args[:shard]}/players/#{args[:lookup_id]}"
         elsif args[:endpoint] == 'match'
-          uri = "/shards/#{args[:shard]}/matches/#{args[:lookup_id]}"
+          uri = "#{base_uri}/shards/#{args[:shard]}/matches/#{args[:lookup_id]}"
         else
-          uri = "/shards/#{args[:shard]}/#{args[:endpoint]}"
+          uri = "#{base_uri}/shards/#{args[:shard]}/#{args[:endpoint]}"
         end
 
         return uri

@@ -3,9 +3,8 @@ require 'httparty'
 module RUBG
   class Client
     include HTTParty
-    base_uri 'https://api.playbattlegrounds.com'
     format :json
-    parser RUBG::JsonGzipParser
+    parser RUBG::ParseGzip
     attr_reader :gzip
     attr_accessor :api_key, :content_type
 
@@ -40,14 +39,15 @@ module RUBG
     end
 
 
-    def match ( args )
+    def match( args )
       args = {:client => self }.merge(args)
       RUBG::Match.fetch( args )
     end
 
 
-    def telemetry
-
+    def telemetry( args )
+      args = {:client => self }.merge(args)
+      RUBG::Telemetry.fetch( args )
     end
 
 
