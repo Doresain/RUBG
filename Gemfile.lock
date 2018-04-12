@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubg (0.2.2)
+    rubg (0.2.3)
       httparty (~> 0.16.2)
       json (~> 2.1.0)
       zlib (~> 1.0.0)
