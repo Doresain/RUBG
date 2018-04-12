@@ -28,8 +28,8 @@ module RUBG
         @tags             = args[:match_data]["attributes"]["tags"]
         @title_id         = args[:match_data]["attributes"]["titleId"]
         @telemetry_id     = args[:match_data]["relationships"]["assets"]["data"][0]["id"]
-        @rounds           = args[:match_data]["relationships"]["rounds"]["data"]
-        @spectators       = args[:match_data]["relationships"]["spectators"]["data"]
+        @rounds           = args[:match_data]["relationships"]["rounds"]["data"]      if args[:match_data]["relationships"]["rounds"]
+        @spectators       = args[:match_data]["relationships"]["spectators"]["data"]  if args[:match_data]["relationships"]["spectators"]
         @link             = args[:match_data]["links"]["self"]
         @telemetry_link   = args[:match_included].detect {|i| i["type"] == "asset" }["attributes"]["URL"]
         
