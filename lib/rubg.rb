@@ -13,6 +13,7 @@ require "rubg/roster"
 require "rubg/participant"
 require "rubg/telemetry"
 require "rubg/status"
+require "rubg/errors"
 
 
 module RUBG

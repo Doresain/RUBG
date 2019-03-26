@@ -35,6 +35,8 @@ module RUBG
       @response = args[:client].class.get(uri,{headers: headers,
                                         query:  query})
 
+      raise RUBG::Errors::Overlimit, @response.message if @response.code == 429
+      
       return @response
     end
 
