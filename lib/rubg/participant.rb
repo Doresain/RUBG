@@ -45,8 +45,8 @@ module RUBG
         @win_ranking_before      = args[:participant_hash]["attributes"]["stats"]["winPoints"]
         @win_ranking_gained      = args[:participant_hash]["attributes"]["stats"]["winPointsDelta"].to_i
         @overall_ranking_gained  = ( 
-          args[:participant_hash]["attributes"]["stats"]["winPointsDelta"] + 
-          ( args[:participant_hash]["attributes"]["stats"]["killPointsDelta"] * 0.2)
+          args[:participant_hash]["attributes"]["stats"]["winPointsDelta"].to_f + 
+          ( args[:participant_hash]["attributes"]["stats"]["killPointsDelta"].to_f * 0.2)
           ).to_i
         @stats                   = args[:participant_hash]["attributes"]["stats"]
 
