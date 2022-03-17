@@ -21,11 +21,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.16"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "bundler", "~> 2.1.4"
+  spec.add_development_dependency "rake", "~> 13.0.6"
   spec.add_development_dependency "minitest", "~> 5.0"
 
-  spec.add_dependency "httparty", "~> 0.16.2"
-  spec.add_dependency "json", "~> 1.8.6"
-  spec.add_dependency "zlib", "~> 1.0.0"
+  spec.add_dependency "httparty", "~> 0.20.0"
+  spec.add_dependency "json", "~> 2.6.1"
+  spec.add_dependency "zlib", "~> 2.1.1"
 end
