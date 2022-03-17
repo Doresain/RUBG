@@ -25,10 +25,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
+  bundler (~> 2.1.4)
   minitest (~> 5.0)
   rake (~> 10.0)
   rubg!
 
 BUNDLED WITH
-   1.17.2
+   2.1.4
