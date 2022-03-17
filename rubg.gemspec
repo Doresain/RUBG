@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0.6"
   spec.add_development_dependency "minitest", "~> 5.0"
 
+  spec.add_dependency "httparty", "~> 0.20.0"
   spec.add_dependency "json", "~> 2.6.1"
   spec.add_dependency "zlib", "~> 2.1.1"
 end
